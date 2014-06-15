@@ -1,0 +1,90 @@
+<br /><br />
+
+<?php
+
+function getEvaluate($ev) {
+    if ($ev == 'e') {
+        echo "ممتاز";
+    } else if ($ev == 'vg') {
+        echo "جيد جدا";
+    } else if ($ev == 'g') {
+        echo "جيد ";
+    } else if ($ev == 'w') {
+        echo "ضعيف";
+    } else if ($ev == 'no') {
+        echo "لا";
+    } else if ($ev == 'yes') {
+        echo "نعم";
+    }
+}
+?>
+
+<div dir="rtl">
+    <font size="6" color="green">احصائيات تقييم الطفل</font>
+</div>
+
+<div dir="rtl">
+    <font size="4" color="blue"> السؤال الاول: </font><strong>نسبة استفادة طفلك من المعلومات الموجودة بالموقع</strong><br>
+    <font size="4" color="blue"> السؤال الثاني: </font><strong>نسبة تأثير الموقع علي سلوك طفلك </strong><br>
+    <font size="4" color="blue"> السؤال الثالث: </font><strong>هل المعلومات المقدمة لطفل في الاسعافات الاولية تسببت في الحاق الاذي به او زملائه</strong><br>
+
+</div>
+
+<div  style="padding: 25px;">
+    <table class = "table" DIR="rtl">
+        <thead>
+            <tr >
+                <td> <strong>
+                        اسم ولي الامر  </strong>
+                </td>
+                <td> <strong>
+                        تقييم السؤال الاول  </strong>
+                </td>
+                <td> <strong>
+                        تقييم السؤال التانى  </strong>
+                </td>
+                <td> <strong>
+                        تقييم السؤال الثالث  </strong>
+                </td>
+
+            </tr>
+        </thead>
+        <?php
+        $i = -1;
+        foreach ($this->evaluate as $evaluates) {
+            $i ++;
+            if ($i % 2 == 0) {
+                echo "<tr class='success'>";
+            } elseif ($i % 2 == 1) {
+                echo "<tr class='active' >";
+            }
+            ?>
+            <td>
+            <?= $evaluates['fname'] . " " . $evaluates['lname'] ?>
+            </td>
+            <td>
+                <?php getEvaluate($evaluates['q1']) ?>
+            </td>
+            <td>
+                <?php getEvaluate($evaluates['q2']) ?>
+            </td>
+            <td>
+                <?php getEvaluate($evaluates['q3']) ?>
+            </td>
+
+
+            </tr>
+
+
+
+    <?php
+}
+?>
+
+    </table>
+</div>
+
+
+
+
+
